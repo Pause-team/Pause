@@ -1,0 +1,22 @@
+{
+    "name": "Pause",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "description": "Show the current timestamp of the video",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "page_action": {
+        "default_title": "Show current timestamp"
+    },
+    "permissions": [
+        "declarativeContent",
+        "activeTab"
+    ],
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+    }]
+}

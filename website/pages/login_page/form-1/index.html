@@ -35,7 +35,7 @@
 
         <!-- Top content -->
         <div class="top-content">
-        	
+
             <div class="inner-bg">
                 <div class="container">
                     <div class="row">
@@ -82,7 +82,7 @@
 	                        	<a class="btn btn-link-1 btn-link-1-twitter" href="#">
 	                        		<i class="fa fa-twitter"></i> Twitter
 	                        	</a>
-	                        	<a class="btn btn-link-1 btn-link-1-google-plus" href="#">
+	                        	<a class="btn btn-link-1 btn-link-1-google-plus" onclick="signIn();" href="#">
 	                        		<i class="fa fa-google-plus"></i> Google Plus
 	                        	</a>
                         	</div>
@@ -90,16 +90,57 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
 
+
+        <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyC3FpISPgUilSgSmpm-pjOUPlRp8nYwm5Q",
+            authDomain: "pause-fb19e.firebaseapp.com",
+            databaseURL: "https://pause-fb19e.firebaseio.com",
+            projectId: "pause-fb19e",
+            storageBucket: "pause-fb19e.appspot.com",
+            messagingSenderId: "714359295912"
+          };
+          firebase.initializeApp(config);
+        </script>
+            <script>
+        var provider = new firebase.auth.GoogleAuthProvider();
+        function signIn() {
+            firebase.auth().signInWithPopup(provider).then(function(result) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            user = result.user;
+            alert(JSON.stringify(user));
+            // $("#bnlah").html();
+            //   window.user = user;
+            showWelcomeContainer();
+            // ...
+            }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            $("#bnlah").html(JSON.stringify(error));
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+            });
+
+        }
+    </script>
 
         <!-- Javascript -->
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/scripts.js"></script>
-        
+
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
         <![endif]-->

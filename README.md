@@ -1,4 +1,4 @@
-# Project Title
+# Pause
 
 A web based application which automatically tracks the progress of videos on any website which uses HTML5 player
 

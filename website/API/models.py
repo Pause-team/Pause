@@ -35,8 +35,6 @@ class Video(Base):
     user_id = Column(Integer, ForeignKey("user.user_id"))
     url = Column(Text, nullable=False)
     title = Column(String(45), nullable=False)
-    created_at = Column(DateTime, default=datetime.now)
-    updated_at = Column(DateTime, onupdate=datetime.now)
 
 
 class Playlist(Base):
@@ -46,6 +44,8 @@ class Playlist(Base):
     description = Column(Text)
     private = Column(Boolean, default=False)
     user_id = Column(Integer, ForeignKey("user.user_id"))
+    created_at = Column(DateTime, default=datetime.now)
+    updated_at = Column(DateTime, onupdate=datetime.now)
 
 
 class PlayListVideo(Base):

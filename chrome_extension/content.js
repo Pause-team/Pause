@@ -11,7 +11,7 @@ function getTitle() {
 
 // function to display the current time stamp on the console
 function timeStamp() {
-    video = document.getElementsByClassName('video-stream')[0];
+    video = document.querySelectorAll('video')[0];
     // currentTime gives the current time stamp of the video
     console.log('Current Time Stamp- ' + video.currentTime);
 

@@ -12,10 +12,14 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime, Text, ForeignKey, Boolean
+from sqlalchemy.orm import validates
 
 # Other imports
 from datetime import datetime
 import os
+
+# Local imports
+from .validators import EMAIL_REGEX
 
 Base = declarative_base()
 
@@ -27,6 +31,11 @@ class User(Base):
     name = Column(String(45))
     created_at = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, onupdate=datetime.now)
+
+    @validates('email')
+    def validate_email(self, key, address):
+        assert EMAIL_REGEX.match(address) is not None
+        return address
 
 
 class Video(Base):

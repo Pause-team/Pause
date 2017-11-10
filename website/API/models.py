@@ -37,6 +37,9 @@ class User(Base):
         assert EMAIL_REGEX.match(address) is not None
         return address
 
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
 class Video(Base):
     __tablename__ = "video"

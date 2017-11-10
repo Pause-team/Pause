@@ -10,8 +10,8 @@
 
     "page_action": {
         "default_title": "Show current timestamp",
-        "default_popup": "popup.html"
-        
+        "default_popup": "popup.html",
+        "default_icon":  "icon.png"
     },
     "permissions": [
         "declarativeContent",

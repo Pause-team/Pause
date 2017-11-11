@@ -15,6 +15,7 @@
 
     <!-- Custom styles for this template -->
     <link href="startbootstrap/css/small-business.css" rel="stylesheet">
+    <link href="landing-page.css" rel="stylesheet">
 
   </head>
 
@@ -29,7 +30,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <!-- <li class="nav-item active">
               <a class="nav-link" href="#">Home
                 <span class="sr-only">(current)</span>
               </a>
@@ -42,7 +43,50 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
-            </li>
+            </li> -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Movie<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="list-inline-item">
+                  <a href="#" class="btn btn-secondary btn-lg" onclick="signIn3();">
+                    <i class="fa fa-twitter fa-fw"></i>
+                    <span class="network-name">Twitter</span>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn btn-secondary btn-lg" onclick="signIn2();" >
+                    <i class="fa fa-facebook fa-fw"></i>
+                    <span class="network-name">Facebook</span>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn btn-secondary btn-lg" onclick="signIn();">
+                    <i class="fa fa-google fa-fw"></i>
+                    <span class="network-name">Google</span>
+                  </a>
+                </li>
+              </ul>
+                    
+            <!-- <ul class="list-inline intro-social-buttons">
+              <li class="list-inline-item">
+                <a href="#" class="btn btn-secondary btn-lg" onclick="signIn2();">
+                  <i class="fa fa-twitter fa-fw"></i>
+                  <span class="network-name">Twitter</span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="btn btn-secondary btn-lg" onclick="signIn2();" >
+                  <i class="fa fa-facebook fa-fw"></i>
+                  <span class="network-name">Facebook</span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" class="btn btn-secondary btn-lg" onclick="signIn();">
+                  <i class="fa fa-google fa-fw"></i>
+                  <span class="network-name">Google</span>
+                </a>
+              </li>
+            </ul> -->
           </ul>
         </div>
       </div>
@@ -129,6 +173,101 @@
     <!-- Bootstrap core JavaScript -->
     <script src="startbootstrap/vendor/jquery/jquery.min.js"></script>
     <script src="startbootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyC3FpISPgUilSgSmpm-pjOUPlRp8nYwm5Q",
+        authDomain: "pause-fb19e.firebaseapp.com",
+        databaseURL: "https://pause-fb19e.firebaseio.com",
+        projectId: "pause-fb19e",
+        storageBucket: "pause-fb19e.appspot.com",
+        messagingSenderId: "714359295912"
+      };
+      firebase.initializeApp(config);
+    </script>
+<!-- Google    -->
+    <script>
+      var provider = new firebase.auth.GoogleAuthProvider();
+      function signIn() {
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        user = result.user;
+        alert(JSON.stringify(user));
+        // $("#bnlah").html();
+        //   window.user = user;
+        showWelcomeContainer();
+        // ...
+        }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        $("#bnlah").html(JSON.stringify(error));
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+        });
+      }
+    </script>
+
+
+<!-- facebook -->
+<!-- https://pause-fb19e.firebaseapp.com/__/auth/handler -->
+    <script>
+      var provider2 = new firebase.auth.FacebookAuthProvider();
+      firebase.auth().signInWithRedirect(provider2);
+      function signIn2(){
+                  firebase.auth().getRedirectResult().then(function(result) {
+            if (result.credential) {
+              // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+              var token = result.credential.accessToken;
+              // ...
+            }
+            // The signed-in user info.
+            var user = result.user;
+          }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+          });
+      }
+    </script>
+
+<!-- Twitter -->
+    <script>
+      var provider3 = new firebase.auth.TwitterAuthProvider();
+      firebase.auth().signInWithRedirect(provider)3;
+      function signIn3(){
+        firebase.auth().getRedirectResult().then(function(result) {
+            if (result.credential) {
+      // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+      // You can use these server side with your app's credentials to access the Twitter API.
+              var token = result.credential.accessToken;
+              var secret = result.credential.secret;
+      // ...
+      }
+      // The signed-in user info.
+      var user = result.user;
+      }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+      });}
+    </script>
 
   </body>
 

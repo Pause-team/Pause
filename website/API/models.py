@@ -12,10 +12,14 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime, Text, ForeignKey, Boolean
+from sqlalchemy.orm import validates
 
 # Other imports
 from datetime import datetime
 import os
+
+# Local imports
+from .validators import EMAIL_REGEX
 
 Base = declarative_base()
 
@@ -28,6 +32,14 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, onupdate=datetime.now)
 
+    @validates('email')
+    def validate_email(self, key, address):
+        assert EMAIL_REGEX.match(address) is not None
+        return address
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
 class Video(Base):
     __tablename__ = "video"
@@ -35,8 +47,6 @@ class Video(Base):
     user_id = Column(Integer, ForeignKey("user.user_id"))
     url = Column(Text, nullable=False)
     title = Column(String(45), nullable=False)
-    created_at = Column(DateTime, default=datetime.now)
-    updated_at = Column(DateTime, onupdate=datetime.now)
 
 
 class Playlist(Base):
@@ -46,6 +56,8 @@ class Playlist(Base):
     description = Column(Text)
     private = Column(Boolean, default=False)
     user_id = Column(Integer, ForeignKey("user.user_id"))
+    created_at = Column(DateTime, default=datetime.now)
+    updated_at = Column(DateTime, onupdate=datetime.now)
 
 
 class PlayListVideo(Base):

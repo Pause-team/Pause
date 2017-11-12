@@ -1,22 +1,24 @@
 // run the loop every 10 seconds
-getTitle();
+// window.onload="getTitle()";
 var loopTime = 10000;
 setInterval(timeStamp,loopTime);
-
-function getTitle() {
-    // get the title of the video being played
-    var videoTitle = document.title;
-    console.log('Title: ' + videoTitle);
-}
 
 // function to display the current time stamp on the console
 function timeStamp() {
     video = document.querySelectorAll('video')[0];
     // currentTime gives the current time stamp of the video
     console.log('Current Time Stamp- ' + video.currentTime);
+    if (window.location.href.indexOf("youtube") > -1) {
+        var videoTitle = document.getElementById('video-title');
+        console.log('Title: ' + videoTitle.innerText);
+    } else if (window.location.href.indexOf("netflix") > -1) {
+        var videoTitle = document.getElementsByClassName('video-title');
+        console.log('Title: ' + videoTitle[0].textContent)
+    }
 
     // call the function on "pause" event
     video.onpause = function() {
-        console.log('Current Time Stamp- ' + video.currentTime);
+        var videoTitle = document.getElementsByClassName('video-title');
+        console.log('Current Time Stamp: ' + video.currentTime);
     };
 }

@@ -14,25 +14,28 @@ class UserAPI:
         new_user = User(name=name, email=email)
         session = self.session()
         session.add(new_user)
+        session.commit()
 
     def read(self, email):
         session = self.session()
-        user = session.query(User).filter(User.email == email).first()
+        user = session.query(User).filter(User.email == email).one_or_none()
         if user is not None:
             return user.as_dict()
         return None
 
     def update(self, email, name):
         session = self.session()
-        user = session.query(User).filter(User.email == email).first()
+        user = session.query(User).filter(User.email == email).one_or_none()
         if user is not None:
             user.name = name
             session.update(user)
+            session.commit()
             return True
         return False
 
     def delete(self, email):
         session = self.session()
-        user = session.query(User).filter(User.email == email).first()
+        user = session.query(User).filter(User.email == email).one_or_none()
         if user is not None:
             session.delete(user)
+            session.commit()

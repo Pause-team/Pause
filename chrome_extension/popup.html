@@ -7,6 +7,12 @@
     <link href="./bootstrap/docs/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="./bootstrap/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="landing-page.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    
     
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -15,52 +21,39 @@
 		<title>Login</title>
 		<style>
 			body	{
-				width: 400px;
-				height: 400px;
+				width: 200px;
+				height: 50px;
 			}
 		</style>
 </head>
-<body>
-        <div class="navbar-wrapper">
-                <div class="container">
-          
-                  <nav class="navbar navbar-inverse navbar-static-top">
-                    <div class="container">
-                      <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                          <span class="sr-only">Toggle navigation</span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Pause Entertainment</a>
-                      </div>
-                      <div id="navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                          <li><a href="#about">
-                              <button onclick="signIn();" >Login</button>
-                              <script src="https://apis.google.com/js/platform.js" async defer></script>
-                            <p id="bnlah"></p>
-                        </a></li>
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Movie<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="#">Movie list</a></li>
-                              <li><a href="#">Watched Movie</a></li>
-                              <li><a href="#">Movie to be Watched</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li class="dropdown-header">Collected Movie List</li>
-                              <li><a href="#">Movie 1</a> </li>
-                              <li><a href="#">Movie 2 </a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </nav>
-          
-                </div>
-              </div>
+
+<body style = "backgrond-color: ">
+
+  <div class="intro-message">
+    <h1>Pause</h1>
+    <h6>Automatically track what you're watching.</h6>
+    <hr class="intro-divider">
+    <ul class="list-inline intro-social-buttons">
+      <li class="list-inline-item">
+        <a href="#" class="btn btn-secondary " onclick="signIn3();">
+          <i class="fa fa-twitter"></i>
+          <span class="network-name">Twitter</span>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#" class="btn btn-secondary " onclick="signIn2();" >
+          <i class="fa fa-facebook fa-fw"></i>
+          <span class="network-name">Facebook</span>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#" class="btn btn-secondary " onclick="signIn();">
+          <i class="fa fa-google fa-fw"></i>
+          <span class="network-name">Google</span>
+        </a>
+      </li>
+    </ul>
+  </div>
     
       <!-- Bootstrap core JavaScript
       ================================================== -->
@@ -71,19 +64,24 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     
     <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyAIT2IIYqJFse1YWdRaScuBiAeZb2ctfRQ",
-        authDomain: "myresume-5dffd.firebaseapp.com",
-        databaseURL: "https://myresume-5dffd.firebaseio.com",
-        projectId: "myresume-5dffd",
-        storageBucket: "myresume-5dffd.appspot.com",
-        messagingSenderId: "524338271669"
-      };
-      firebase.initializeApp(config);
-    </script>
-    <script>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyC3FpISPgUilSgSmpm-pjOUPlRp8nYwm5Q",
+            authDomain: "pause-fb19e.firebaseapp.com",
+            databaseURL: "https://pause-fb19e.firebaseio.com",
+            projectId: "pause-fb19e",
+            storageBucket: "pause-fb19e.appspot.com",
+            messagingSenderId: "714359295912"
+          };
+          firebase.initializeApp(config);
+        </script>
+            <script>
         var provider = new firebase.auth.GoogleAuthProvider();
         function signIn() {
             firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -107,8 +105,57 @@
             var credential = error.credential;
             // ...
             });
-
         }
+    </script>
+
+
+    <!-- facebook -->
+    <script>
+      var provider2 = new firebase.auth.FacebookAuthProvider();
+      //firebase.auth().signInWithRedirect(provider2);
+      function signIn2(){
+            firebase.auth().signInWithPopup(provider2).then(function(result) {
+            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            // ...
+          }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+          });
+      }
+    </script>
+
+    
+    <script>
+      var provide3 = new firebase.auth.TwitterAuthProvider();
+      function signIn3(){
+          firebase.auth().signInWithPopup(provide3).then(function(result) {
+          // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+          // You can use these server side with your app's credentials to access the Twitter API.
+          var token = result.credential.accessToken;
+          var secret = result.credential.secret;
+          // The signed-in user info.
+          var user = result.user;
+          // ...
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // ...
+        });
+      }
     </script>
 </body>
 </html>

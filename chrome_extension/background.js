@@ -24,6 +24,6 @@ chrome.runtime.onInstalled.addListener(function() {
 // Execute the content.js script
 chrome.pageAction.onClicked.addListener(function(tab) {
     chrome.tabs.executeScript(null, {
-        file: "content.js"
+        file: ["jquery.min.js", "content.js"]
     });
 });

@@ -37,7 +37,8 @@ function timeStamp() {
                 data: {
                     'user_id': user_id,
                     'url': video_url,
-                    'currentTime': video.currentTime
+                    'total_duration': video.duration,
+                    'video_progress': video.currentTime
                 },
                 success: function(data) {
                     console.log(data);

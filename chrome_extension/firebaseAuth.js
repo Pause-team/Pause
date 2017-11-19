@@ -8,10 +8,10 @@ var config = {
 };
 
 $(document).ready(function() {
-
     $('#chromeSignInButton').click(function() {
-        var newURL = "https://pause-team.github.io?signin=true";
-    chrome.tabs.create({ url: newURL });
+        var newURL = "http://localhost/Pause/pause-team.github.io/#";
+        chrome.tabs.create({
+            url: newURL
+        });
     });
-
 });

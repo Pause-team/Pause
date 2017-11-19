@@ -27,7 +27,7 @@
         "run_at": "document_end"
     }],
     "externally_connectable": {
-        "matches": ["*://*.pause-team.github.io/*"]
+        "matches": ["*://*.pause-team.github.io/*", "http://localhost/Pause/pause-team.github.io/"]
     },
     "oauth2": {
       "client_id": "714359295912-20m76one8mfaalu1dcu14m479nqvphgs.apps.googleusercontent.com",

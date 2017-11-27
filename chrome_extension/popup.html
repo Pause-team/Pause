@@ -12,12 +12,7 @@
 
         <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    
-    
-        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-        <script src="./bootstrap/docs/assets/js/ie-emulation-modes-warning.js"></script>
-        
+
 		<title>Login</title>
 		<style>
 			body	{
@@ -25,6 +20,11 @@
 				height: 50px;
 			}
 		</style>
+
+    <!-- include jquery and other js files -->
+    <script src="jquery.min.js"></script>
+    <script src="firebaseAuth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
 </head>
 
 <body style = "backgrond-color: ">
@@ -41,121 +41,27 @@
         </a>
       </li>
       <li class="list-inline-item">
-        <a href="#" class="btn btn-secondary " onclick="signIn2();" >
+        <a href="#" class="btn btn-secondary " id="facebookLogin" >
           <i class="fa fa-facebook fa-fw"></i>
           <span class="network-name">Facebook</span>
         </a>
       </li>
       <li class="list-inline-item">
-        <a href="#" class="btn btn-secondary " onclick="signIn();">
+        <a id="chromeSignInButton" href="#" class="btn btn-secondary">
           <i class="fa fa-google fa-fw"></i>
           <span class="network-name">Google</span>
         </a>
       </li>
     </ul>
   </div>
-    
+
       <!-- Bootstrap core JavaScript
       ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
       <!-- Latest compiled and minified JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    
-    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+      <!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script-->
 
-    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  
-    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-        <script>
-          // Initialize Firebase
-          var config = {
-            apiKey: "AIzaSyC3FpISPgUilSgSmpm-pjOUPlRp8nYwm5Q",
-            authDomain: "pause-fb19e.firebaseapp.com",
-            databaseURL: "https://pause-fb19e.firebaseio.com",
-            projectId: "pause-fb19e",
-            storageBucket: "pause-fb19e.appspot.com",
-            messagingSenderId: "714359295912"
-          };
-          firebase.initializeApp(config);
-        </script>
-            <script>
-        var provider = new firebase.auth.GoogleAuthProvider();
-        function signIn() {
-            firebase.auth().signInWithPopup(provider).then(function(result) {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            var token = result.credential.accessToken;
-            // The signed-in user info.
-            user = result.user;
-            alert(JSON.stringify(user));
-            // $("#bnlah").html();
-            //   window.user = user;
-            showWelcomeContainer();
-            // ...
-            }).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // The email of the user's account used.
-            var email = error.email;
-            $("#bnlah").html(JSON.stringify(error));
-            // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
-            // ...
-            });
-        }
-    </script>
 
-
-    <!-- facebook -->
-    <script>
-      var provider2 = new firebase.auth.FacebookAuthProvider();
-      //firebase.auth().signInWithRedirect(provider2);
-      function signIn2(){
-            firebase.auth().signInWithPopup(provider2).then(function(result) {
-            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-            var token = result.credential.accessToken;
-            // The signed-in user info.
-            var user = result.user;
-            // ...
-          }).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // The email of the user's account used.
-            var email = error.email;
-            // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
-            // ...
-          });
-      }
-    </script>
-
-    
-    <script>
-      var provide3 = new firebase.auth.TwitterAuthProvider();
-      function signIn3(){
-          firebase.auth().signInWithPopup(provide3).then(function(result) {
-          // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
-          // You can use these server side with your app's credentials to access the Twitter API.
-          var token = result.credential.accessToken;
-          var secret = result.credential.secret;
-          // The signed-in user info.
-          var user = result.user;
-          // ...
-        }).catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // The email of the user's account used.
-          var email = error.email;
-          // The firebase.auth.AuthCredential type that was used.
-          var credential = error.credential;
-          // ...
-        });
-      }
-    </script>
 </body>
 </html>

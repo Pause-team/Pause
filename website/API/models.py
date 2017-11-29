@@ -5,7 +5,7 @@
     This file contains the SQL models found in the <project-root>/database directory. We leverage the power of
     SQLAlchemy to use any server we want by setting the following environment variable.
     *   PAUSE_DB - URL for connecting with DB, default: "sqlite:///data.db",
-        see link: http://docs.sqlalchemy.org/en/latest/core/engines.html for more information.
+        see link: http://docs.sqlalchemy.org/en/latest/core/engines.html for more information
 
 """
 # SQLAlchemy imports
@@ -45,12 +45,8 @@ class Video(Base):
     __tablename__ = "video"
     video_id = Column(Integer, autoincrement=True, primary_key=True)
     user_id = Column(Integer, ForeignKey("user.user_id"))
-    url = Column(Text, primary_key=True)
+    url = Column(Text, nullable=False)
     title = Column(String(45), nullable=False)
-    progress = Column(Integer, nullable=False)
-
-    def as_dict(self):
-        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
 class Playlist(Base):
@@ -62,9 +58,6 @@ class Playlist(Base):
     user_id = Column(Integer, ForeignKey("user.user_id"))
     created_at = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, onupdate=datetime.now)
-
-    def as_dict(self):
-        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
 class PlayListVideo(Base):

@@ -15,6 +15,10 @@ Until our extension becomes available on the chrome's webstore, follow these ste
 4) Browse to the location where the file is saved and select the "chrome_extension" folder
 5) Login to our website
 
+## Landing Page
+
+The [landing page](https://pause-team.github.io/) created by Daniel Quartey.
+
 ## Authors
 
 * **Anish Gupta** (https://github.com/nkanish2002)

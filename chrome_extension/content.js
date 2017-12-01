@@ -31,8 +31,9 @@ function timeStamp() {
         // access the localstorage to get the user id,
         // pass all the variables to the ajax url
         chrome.storage.local.get('user_id', function(result) {
-            var user_id = result.user_id;
+            var user_id = '"'+JSON.parse(result.user_id).uid+'"';
             alert(user_id);
+            alert(videoTitle);
             // the url of the video being watched
             video_url = window.location.href;
             // current placeholder - will change after getting this info from the login page
@@ -41,7 +42,7 @@ function timeStamp() {
                 url: "https://localhost/Pause/pause-team.github.io/database/insertData.php",
                 data: {
                     'user_id': user_id,
-                    //'video_title': videoTitle,
+                    'video_title': videoTitle,
                     'url': video_url,
                     'total_duration': video.duration,
                     'video_progress': video.currentTime

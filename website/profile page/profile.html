@@ -1,66 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title> Pause Entertainment </title>
-	<link href="userint.css" rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pause</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+        .main-body  {
+            padding-top: 30px;
+        }
+        .ellipsis   {
+            white-space: nowrap;
+            overflow: hidden; 
+        }
+    </style>
 </head>
-<body>
-	<div id='container'>
-	<div id="header">
-		<a style='color: white; font-size: 25px'>
-			Pause
-		</a>
-		<a href="#" style='float:right; color:white ;font-size: 20px; text-decoration:none'>
-			Sign Out</a> 
-	</div>
-	<div id='profileImage'>
-		<div id='propic'>
-				<img src="placeholder.jpg" alt="profile pic " style="max-width:250px ; max-height: 250px ; margin-top: 0" >
-		</div>
-		<div id='username'>
-			<ul style="list-style-type:none; align-items:center">
-				<li>
-					Username
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div id='watching'>
-		<div id='boxname2'>
-			<h3> Watching </h3>
-		</div>
-		<div id='fmovie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-	</div>
-	<div id='recommendation'>
-		<div id='boxname'>
-			<h3> Recommendation </h3>
-		</div>
-	</div>
-	<div id='watched'>
-		<div id='boxname'>
-			<h3> Watched </h3>
-		</div>
-		<div id='fmovie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
-		<div id='movie'></div>
+<body style="background-color: #e1e8f0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="#">Pause</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-danger my-2 my-sm-0" type="submit">Sign Out</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container main-body-fluid" >
+        <div class="jumbotron" >
+            <!-- Add username -->
+            <h2>Welcome User, </h2>
+        </div>
+    </div>
+
+        
+    <div class="container-fluid">
+        <div class="container col-lg-6 float-left">
+            <h5> Watching</h5>
+            <table class="table table-striped ">
+                    <col width="270">
+                     <col width="50">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Title</th>
+                        <th>Progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td class="text-truncate" style="max-width: 100px;">
+                            <a href="$url">Video Name</a>
+                        </td>
+                        <td>05:00/7:00</td>
+                    </tr>
+                    <tr>
+                        <td class="text-truncate" style="max-width: 100px;">
+                            <a href="$url">Video Name 2</a>
+                        </td>
+                        <td>05:01/7:00</td>
+                    </tr>
+                    <tr>
+                        <td class="text-truncate" style="max-width: 100px;">
+                            <a href="$url">Video Name 3</a>
+                        </td>
+                        <td>05:02/7:00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> <!--for table-->
 
 
-	</div>
-	<!--<div id='profileImage'></div>-->
-	</div>
+        <div class="container col-lg-6 float-right">
+            <h5 class="float-right"> You Might Like </h5>
+            <table class="table ">
+                <tbody>
+      <tr>
+        <td>
+      <div class="thumbnail">
+        <a href="/w3images/lights.jpg" target="_blank">
+          <img src="placeholder.jpg" alt="Lights" style="width:100%">
+          <div class="caption">
+            <p class="text-center">Video Name</p>
+          </div>
+        </a>
+      </div></td>
+        <td>
+      <div class="thumbnail">
+        <a href="/w3images/lights.jpg" target="_blank">
+          <img src="placeholder.jpg" alt="Lights" style="width:100%">
+          <div class="caption">
+            <p class="text-center">Video Name</p>
+          </div>
+        </a>
+      </div></td>
+        <td>
+      <div class="thumbnail">
+        <a href="/w3images/lights.jpg" target="_blank">
+          <img src="placeholder.jpg" alt="Lights" style="width:100%">
+          <div class="caption">
+            <p class="text-center">Video Name</p>
+          </div>
+        </a>
+      </div></td>
+      </tr>
+      <tr>
+        <td>
+      <div class="thumbnail">
+        <a href="/w3images/lights.jpg" target="_blank">
+          <img src="placeholder.jpg" alt="Lights" style="width:100%">
+          <div class="caption">
+            <p class="text-center">Video Name</p>
+          </div>
+        </a>
+      </div></td>
+        <td>
+      <div class="thumbnail">
+        <a href="/w3images/lights.jpg" target="_blank">
+          <img src="placeholder.jpg" alt="Lights" style="width:100%">
+          <div class="caption">
+            <p class="text-center">Video Name</p>
+          </div>
+        </a>
+      </div></td>
+        <td>
+      <div class="thumbnail">
+        <a href="/w3images/lights.jpg" target="_blank">
+          <img src="placeholder.jpg" alt="Lights" style="width:100%">
+          <div class="caption">
+            <p class="text-center">Video Name</p>
+          </div>
+        </a>
+      </div></td>
+      </tr>
+            </table>
+        </div> <!--for table-->
+
+
+        </div>
+  
+
+    <!-- JS Files -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <!-- UI Manip Scripts -->
+    <script>
+        function extractHostname(url) {
+            var hostname;
+            if (url.indexOf("://") > -1) {
+                hostname = url.split('/')[2];
+            }
+            else {
+                hostname = url.split('/')[0];
+            }
+            hostname = hostname.split(':')[0];
+            hostname = hostname.split('?')[0];
+            return hostname;
+        }
+
+        $(".open-link").click(function(e){
+            window.open(e.currentTarget.dataset.link);
+        });
+    </script>
 </body>
+</html>

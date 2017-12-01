@@ -9,8 +9,8 @@ function timeStamp() {
     // currentTime gives the current time stamp of the video
     console.log('Current Time Stamp- ' + video.currentTime);
     if (window.location.href.indexOf("youtube") > -1) {
-        var videoTitle = document.getElementById('video-title');
-        console.log('Title: ' + videoTitle.innerText);
+        var videoTitle = document.querySelector('.title').innerHTML;
+        console.log(videoTitle);
     } else if (window.location.href.indexOf("netflix") > -1) {
         var videoTitle = document.getElementsByClassName('video-title');
         console.log('Title: ' + videoTitle[0].textContent)
@@ -19,7 +19,13 @@ function timeStamp() {
     // call the function on "pause" event
     video.onpause = function() {
         var videoTitle = document.getElementsByClassName('video-title');
-        console.log('Current Time Stamp: ' + video.currentTime);
+        if (window.location.href.indexOf("youtube") > -1) {
+            var videoTitle = document.querySelector('.title').innerHTML;
+            console.log(videoTitle);
+        } else if (window.location.href.indexOf("netflix") > -1) {
+            var videoTitle = document.getElementsByClassName('video-title');
+            console.log('Title: ' + videoTitle[0].textContent)
+        }
 
         // setup variables to send to the php function
         // access the localstorage to get the user id,

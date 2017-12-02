@@ -71,10 +71,10 @@ window.addEventListener("message", function(event) {
         chrome.storage.local.set({
             "user_id": user_id
         });
+        chrome.runtime.sendMessage({
+            message: "redirect"
+        }, function(response) {
+            console.log(response.farewell);
+        });
     }
-    chrome.runtime.sendMessage({
-        greeting: "hello"
-    }, function(response) {
-        console.log(response.farewell);
-    });
 });

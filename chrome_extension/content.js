@@ -34,14 +34,14 @@ function timeStamp() {
             var user_id = '"'+JSON.parse(result.user_id).uid+'"';
             var userName = JSON.parse(result.user_id).displayName;
             var emailId = JSON.parse(result.user_id).email;
-            alert(userName);
-            alert(emailId);
+            //alert(userName);
+            //alert(emailId);
             // the url of the video being watched
             video_url = window.location.href;
             // current placeholder - will change after getting this info from the login page
             $.ajax({
                 type: "POST",
-                url: "https://localhost/Pause/pause-team.github.io/database/insertData.php",
+                url: "https://pause.trixster.xyz/database/insertData.php",
                 data: {
                     'user_id': user_id,
                     'user_name': userName,
@@ -66,7 +66,7 @@ window.addEventListener("message", function(event) {
 
     if (event.data.type && (event.data.type == "FROM_PAGE")) {
         user_id = event.data.text;
-        alert(user_id);
+        //alert(user_id);
         // save the user id in the local storage of the extension
         chrome.storage.local.set({
             "user_id": user_id

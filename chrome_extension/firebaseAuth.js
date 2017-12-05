@@ -9,7 +9,7 @@ var config = {
 
 $(document).ready(function() {
     $('#chromeSignInButton').click(function() {
-        var newURL = "http://localhost/Pause/pause-team.github.io/#";
+        var newURL = "https://pause.trixster.xyz/#";
         chrome.tabs.create({
             url: newURL
         });

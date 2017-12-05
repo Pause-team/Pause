@@ -31,8 +31,8 @@ chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         chrome.storage.local.get('user_id', function(result) {
             var user_id = result.user_id;
-            var newURL = "http://localhost/Pause/pause-team.github.io/profile.php?username=" + user_id;
-            chrome.tabs.create({
+            var newURL = "http://localhost/Pause/pause-team.github.io/profile.php?username=" + JSON.stringify(JSON.parse(user_id).uid);
+            chrome.tabs.update({
                 url: newURL
             });;
         });

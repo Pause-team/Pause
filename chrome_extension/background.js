@@ -31,7 +31,6 @@ chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         chrome.storage.local.get('user_id', function(result) {
             var user_id = result.user_id;
-            // alert(user_id)
             var newURL = "https://pause.trixster.xyz/profile.php?username=" + JSON.stringify(JSON.parse(user_id).email);
             chrome.tabs.update({
                 url: newURL

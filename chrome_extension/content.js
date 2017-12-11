@@ -12,8 +12,8 @@ function timeStamp() {
         var videoTitle = document.querySelector('.title').innerHTML;
         console.log(videoTitle);
     } else if (window.location.href.indexOf("netflix") > -1) {
-        var videoTitle = document.getElementsByClassName('video-title');
-        console.log('Title: ' + videoTitle[0].textContent)
+        var videoTitle = document.getElementsByClassName('video-title')[0].textContent;
+        console.log('Title: ' + videoTitle)
     }
 
     // call the function on "pause" event

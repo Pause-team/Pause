@@ -31,7 +31,7 @@ function timeStamp() {
         // access the localstorage to get the user id,
         // pass all the variables to the ajax url
         chrome.storage.local.get('user_id', function(result) {
-            var user_id = '"'+JSON.parse(result.user_id).uid+'"';
+            var user_id = '"'+JSON.parse(result.user_id).email+'"';
             var userName = JSON.parse(result.user_id).displayName;
             var emailId = JSON.parse(result.user_id).email;
             //alert(userName);
